@@ -15,3 +15,11 @@ after_success:
   - docker build -t chetanrp19/multi-nginx ./nginx
   - docker build -t chetanrp19/multi-server ./server
   - docker build -t chetanrp19/multi-worker ./worker
+  # login to docker
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  # push images
+  - docker push chetanrp19/multi-client
+  - docker push chetanrp19/multi-nginx
+  - docker push chetanrp19/multi-server
+  - docker push chetanrp19/multi-worker
+
